@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+    <head>
+        <base href="/emris.local" />
+        <meta charset="UTF-8" />
+        <title><?= $title ?></title>
+        <meta name="description" content="<?= $description ?>" />
+        <meta name="keywords" content="<?= $keyWords ?>" />
+        <link rel="stylesheet" href="../bin/css/style.css">
+        <link rel="stylesheet" href="../bin/css/login.css">
+        <link rel="icon" href="data:,">
+        <script src="./views/jquery-3.2.1.min.js"></script>
+    </head>
+
+    <body>
+        <?php
+        if (isset($_SESSION['user_id'])) {
+            ?>
+            <header>
+                <h1 id="logo"><?= $_SESSION['user_fullname'] ?></h1><span>Role: <?= $_SESSION['user_role_name'] ?></span>
+                <div id="navbar_container"></div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="login/logout">
+                                <div class="nav_button main-button">Odhlásit</div>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <?php
+        }
+        ?>
+        <main>
+            <?php $this->controller->getView(); ?>
+        </main>
+        <footer>
+            <p>Studentský zápočtový projekt | 2024 Copyrights &copy; Matějovský Lukáš | Email: matejlu2@uhk.cz |
+                Poslední úprava provedena 13. května 2024</p>
+        </footer>
+        <script>
+            /* Jednoduché burger menu */
+            $("#navbar_container").on("click", function () {
+                if ($("nav").css("height") === "300px") {
+                    $("nav").css("height", "0px");
+                    $("#navbar_container").css("background-image", "url('../bin/images/icons8-menu-rounded-50.png')");
+                } else {
+                    $("nav").css("height", "300px");
+                    $("#navbar_container").css("background-image", "url('../bin/images/app_menu_sideways.png')");
+                }
+            });
+
+            $(window).on("resize", function () {
+                var win = $(this);
+//                if (win.width() > 768) {
+                if (win.width() > 1300) {
+                    $("#navbar_container").css("background-image", "url('../bin/images/app_menu_sideways.png')");
+                    $("nav").css("height", "50px");
+                } else {
+                    $("#navbar_container").css("background-image", "url('../bin/images/icons8-menu-rounded-50.png')");
+                    $("nav").css("height", "0px");
+                }
+            });
+        </script>
+        <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    </body>
+</html>
