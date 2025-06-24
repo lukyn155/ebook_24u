@@ -11,7 +11,11 @@ class RouterController extends Controller {
         // Začne session ve webovém prohlížeči
         session_start();
 
-        $controllerClass = 'library';
+        $parsedURL = $this->parseURL($parameters[0]);
+        if (empty($parsedURL[0])) {
+            $parsedURL = array("library");
+//            $controllerClass = 'LibraryController';
+        }
         // Nastavení kontroléru z URL stringu
         $controllerClass = $this->dashToCamelCase(array_shift($parsedURL)) . 'Controller';
 
