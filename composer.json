@@ -1,0 +1,18 @@
+{
+    "require": {
+        "doctrine/orm": "^3",
+        "doctrine/dbal": "^4",
+        "symfony/cache": "^7",
+        "doctrine/migrations": "^3.9"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "public/entities"
+        }
+    },
+    "require-dev": {
+        "codeception/codeception": "^5.1",
+        "codeception/module-phpbrowser": "*",
+        "codeception/module-asserts": "*"
+    }
+}
