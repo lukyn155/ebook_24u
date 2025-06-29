@@ -1,0 +1,31 @@
+<?php
+var_dump($debug);
+?>
+<div id="registration">
+    <h1>Registrace</h1>
+    <!--    <form method="post" onsubmit="return handleValidity(this);">-->
+    <form method="post">
+        <label for="name">Název:</label><input id="name" name="name" type="text" required/>
+        <label for="author">Autor:</label><input id="author" name="author" type="text" required/>
+        <label for="year">Rok:</label><input id="year" name="year" type="number" required/>
+        <label for="anotation">Anotace:</label><textarea id="anotation" name="anotation" type="text" required></textarea>
+        <label for="score">Hodnocení:</label><input id="score" name="score" type="number" required/>
+        <div><input class="main-button" type="submit" name="insert" value="Vložit" /></div>
+    </form>
+</div>
+
+<a href="book-insert/import"><button class="main-button">Importovat</button></a>
+<script>
+    function handleValidity(element) {
+        var pass = document.getElementById('regPass');
+        var passConf = document.getElementById('regPassConf');
+
+        if (pass.value === passConf.value) {
+            return true;
+        } else {
+            alert('Zadaná hesla se musí shodovat!');
+            return false;
+        }
+        return false;
+    }
+</script>

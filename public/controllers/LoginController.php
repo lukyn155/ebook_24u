@@ -33,7 +33,7 @@ class LoginController extends Controller {
             if (!$this->authentication) {
                 $this->data['sign_error'] = "Bad credentials!";
             } else {
-                $this->redirect('library');
+                $this->redirect('book-insert');
             }
         } elseif (isset($_POST['regName'])) {
             $this->data['registation'] = $login->register($_POST);
