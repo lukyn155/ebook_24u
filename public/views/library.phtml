@@ -1,8 +1,10 @@
 <h1 class="transaction_h1">Knižní přehled</h1>
 <div class="flexbox">
-    <div class="box">
-        <div class="bookname">Název knihy</div>
-        <div class="author">Autor</div>
-        <div class="year">Rok vydání</div>
-    </div>
+    <?php foreach ($library as $book): ?>
+        <div class="box">
+            <div class="bookname"><?= $book->getName(); ?></div>
+            <div class="author"><?= $book->getAuthor(); ?></div>
+            <div class="year"><?= $book->getYear(); ?></div>
+        </div>
+    <?php endforeach; ?>
 </div>

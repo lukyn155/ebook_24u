@@ -11,6 +11,10 @@ class LibraryController extends Controller {
             'description' => 'Přehledová stránka přidaných knih.'
         );
 
+        $library = new BookModel();
+        
+        $this->data['library'] = $library->getWholeLibrary();
+        
         $this->view = 'library';
     }
 }
