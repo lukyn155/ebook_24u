@@ -1,0 +1,151 @@
+/* ========= proměnné & placeholdry ========= */
+$box-shadow: 4px 7px 13px 0 rgba(0, 0, 0, .75);
+$border:     1px solid black;
+$radius:     1rem;
+
+/* společný obal pro login / registraci / basic-form */
+%form-wrapper {
+  width: 28%;
+  margin: 7rem auto 0;
+  border: $border;
+  border-radius: $radius;
+  padding: 2rem;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: $box-shadow;
+}
+
+/* mixin pro vnitřní <form> */
+@mixin form-base($height) {
+  height: $height;
+  width: 80%;
+  margin-top: 1rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+/* ========= globální ========= */
+form input[type="submit"] { cursor: pointer; }
+
+/* ========= LOGIN ========= */
+#login {
+  @extend %form-wrapper;
+  height: 23rem;
+
+  h1 {
+    width: 80%; margin: 0;
+    color: var(--text-color);
+    text-align: center;
+  }
+
+  form {
+    @include form-base(80%);
+
+    input        { margin-bottom: 1.5rem; height: 2rem; font-size: 1.2rem; padding: .2rem; }
+    label        { margin-bottom: .5rem; font-weight: bold; }
+    div          { width: 100%; text-align: right; }
+    button       { padding: .5rem 1rem; margin-top: 1.5rem; }
+  }
+}
+
+/* ========= REGISTRATION ========= */
+#registration {
+  @extend %form-wrapper;
+  height: 50rem;
+
+  h1 {
+    width: 80%; margin: 0;
+    color: var(--text-color);
+    text-align: center;
+  }
+
+  form {
+    @include form-base(80%);
+
+    input:not([type="submit"]) {
+      margin-bottom: 1.5rem;
+      height: 2rem;
+      width: 100%;
+      font-size: 1.2rem;
+      padding: .2rem;
+    }
+
+    label  { margin-bottom: .5rem; font-weight: bold; }
+    div    { width: 100%; text-align: right; }
+    button { padding: .5rem 1rem; margin-top: 1.5rem; }
+  }
+}
+
+/* ========= BASIC-FORM (obecný formulář) ========= */
+.basic-form {
+  @extend %form-wrapper;
+  width: 20%;  // odlišná šířka
+
+  h1 {
+    width: 80%; margin: 0;
+    font-size: 2rem; text-align: center; color: var(--text-color);
+  }
+
+  form {
+    @include form-base(100%);
+
+    input { margin-bottom: 1.5rem; height: 1.5rem; font-size: 1rem; padding: .2rem; }
+    select { margin-bottom: 1.5rem; }
+    label  { margin-bottom: .5rem; font-weight: bold; }
+
+    .form-button { width: 100%; text-align: right; }
+
+    button { padding: .5rem 1rem; margin-top: 1.5rem; }
+
+    /* –– šachovnicový výběr materiálu –– */
+    .material-checkboxes {
+      width: 100%; display: flex; flex-wrap: wrap;
+
+      div   { display: flex; flex: 1; }
+      label { margin-top: .25rem;  }
+      input { width: 1.8rem; margin: 0 1rem 0 0; }
+    }
+  }
+}
+
+/* ========= DOPLŇKY / SPECIALITY ========= */
+
+.unattached {
+  position: absolute;
+  background: var(--body-background);
+  right: calc(50vw - 15rem);
+  top: 20vh;
+  z-index: 100;
+}
+
+.user-action-form {
+  div {
+    margin-top: 1rem;
+    display: flex; justify-content: space-between;
+
+    select, input, textarea {
+      width: 50%;
+      max-width: none;
+    }
+  }
+
+  .form-button { justify-content: right; }
+}
+
+/* ========= RESPONSIVE: <= 1300 px ========= */
+@media (max-width: 1300px) {
+  #login, #registration,
+  .basic-form       { width: 70%; }
+
+  #login h1,
+  #registration h1,
+  .basic-form h1    { font-size: 1.2em; }
+}

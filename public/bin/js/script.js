@@ -1,0 +1,1 @@
+console.log("Gulp + ES6 JS is running!");
