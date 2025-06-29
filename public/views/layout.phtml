@@ -16,13 +16,27 @@
         if (isset($_SESSION['user_id'])) {
             ?>
             <header>
-                <h1 id="logo"><?= $_SESSION['user_fullname'] ?></h1><span>Role: <?= $_SESSION['user_role_name'] ?></span>
+                <h1 id="logo"><?= $_SESSION['user_fullname'] ?></h1>
                 <div id="navbar_container"></div>
                 <nav>
                     <ul>
                         <li>
                             <a href="login/logout">
                                 <div class="nav_button main-button">Odhlásit</div>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <?php
+        } else {
+            ?>
+            <header>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="login">
+                                <div class="nav_button main-button">Přihlásit</div>
                             </a>
                         </li>
                     </ul>

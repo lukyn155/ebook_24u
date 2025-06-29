@@ -1,0 +1,54 @@
+<?php
+var_dump($debug);
+
+if (isset($registration)) {
+    ?>
+    <div class="error">
+        <?= var_dump($registration) ?>
+    </div>  
+    <?php
+}
+?>
+<div id="login">
+    <h1>Přihlášení</h1>
+    <form method="post">
+        <label for="name">Login:</label><input id="name" name="name" type="text" value="<?= isset($name) ? $name : '' ?>"/>
+        <label for="pass">Heslo:</label><input id="pass" name="pass" type="password" value="<?= isset($pass) ? $pass : '' ?>"/>
+        <div><button class="main-button">Přihlásit</button></div>
+    </form>
+</div>
+<div id="registration">
+    <h1>Registrace</h1>
+    <form method="post" onsubmit="return handleValidity(this);">
+        <label for="regName">Jméno:</label><input id="regName" name="regName" type="text" required/>
+        <label for="regSurname">Příjmení:</label><input id="regSurname" name="regSurname" type="text" required/>
+        <label for="regEmail">Email:</label><input id="regEmail" name="regEmail" type="email" required/>
+        <label for="regLogin">Login:</label><input id="regLogin" name="regLogin" type="text" required/>
+        <label for="regPass">Heslo:</label><input id="regPass" name="regPass" type="password" required/>
+        <label for="regPassConf">Potvrzení hesla:</label><input id="regPassConf" name="regPassConf" type="password" required/>
+        <!--<div><button class="main-button">Přihlásit</button></div>-->
+        <div><input class="main-button" type="submit" name="registration" value="Registrovat" /></div>
+    </form>
+</div>
+<script>
+    function handleValidity(element) {
+        var pass = document.getElementById('regPass');
+        var passConf = document.getElementById('regPassConf');
+        
+        if(pass.value === passConf.value) {
+            return true;
+        } else {
+            alert('Zadaná hesla se musí shodovat!');
+            return false;
+        }
+        return false;
+    }
+</script>
+<?php
+if (isset($sign_error)) {
+    ?>
+    <div class="error">
+        <?= $sign_error ?>
+    </div>  
+    <?php
+}
