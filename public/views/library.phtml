@@ -5,6 +5,10 @@
             <div class="bookname"><?= $book->getName(); ?></div>
             <div class="author"><?= $book->getAuthor(); ?></div>
             <div class="year"><?= $book->getYear(); ?></div>
+            <div class="details">
+                <div class="anotation"><?= $book->getAnotation(); ?></div>
+                <div class="score"><?= $book->getScore(); ?></div>
+            </div>
         </div>
     <?php endforeach; ?>
 </div>
